@@ -16,7 +16,7 @@ node() {
         def selector = [$class: 'LastCompletedBuildSelector'];
         step ([$class: 'CopyArtifact', projectName: "php-src/${BRANCH}/build", selector: selector, parameters: "BRANCH=${BRANCH}"]);
         def zipName = sh([script:"find -name php-*.zip", returnStdout:true]).trim();
-        fingerprint(zipName);
+        fingerprint("php-*.zip");
         unzip([dir: 'php-install', zipFile: zipName]);
         sh("chmod +x ./php-install/bin/php");
         sh("chmod +x ./php-install/bin/php-cgi");
