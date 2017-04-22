@@ -17,6 +17,7 @@ node() {
     }
 
     stage('Configure') {
+        def defaultConfigure = '--with-openssl';
         sh('./buildconf --force');
         def debugConfigure = '--enable-debug';
         if(DEBUG != 'true') {
@@ -26,7 +27,7 @@ node() {
         if(MAINTAINERZTS != 'true') {
             ztsConfigure = '';
         }
-        sh("./configure --prefix=${WORKSPACE}/php-install ${debugConfigure} ${ztsConfigure}");
+        sh("./configure --prefix=${WORKSPACE}/php-install ${defaultConfigure} ${debugConfigure} ${ztsConfigure}");
     }
 
     stage('Build') {
