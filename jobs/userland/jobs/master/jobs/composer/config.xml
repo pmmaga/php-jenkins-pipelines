@@ -36,7 +36,7 @@
       <triggers>
         <jenkins.triggers.ReverseBuildTrigger>
           <spec></spec>
-          <upstreamProjects>php-src/master/build</upstreamProjects>
+          <upstreamProjects>php-src/master/tests</upstreamProjects>
           <threshold>
             <name>SUCCESS</name>
             <ordinal>0</ordinal>
