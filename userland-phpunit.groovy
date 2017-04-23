@@ -21,7 +21,7 @@ node() {
         sh("chmod +x ./php-install/bin/php");
     }
 
-    stage('Run Composer') {
+    stage('Setup Composer') {
         def expectedSignature = sh([script:"wget -q -O - https://composer.github.io/installer.sig", returnStdout:true]).trim();
         sh("wget -q -O - https://getcomposer.org/installer > composer-setup.php");
         def actualSignature = sh([script:"php-install/bin/php -r \"echo hash_file('SHA384', 'composer-setup.php');\"", returnStdout:true]).trim();
@@ -31,8 +31,12 @@ node() {
         }
 
         sh("php-install/bin/php composer-setup.php --quiet");
+    }
 
-        sh("php-install/bin/php composer.phar install");
+    stage('Run Composer Install') {
+        def composerRootVersion = sh([script:"php-install/bin/php -r 'echo json_decode(file_get_contents(\"./composer.json\"), true)[\"extra\"][\"branch-alias\"][\"dev-master\"];'", returnStdout:true]).trim();
+
+        sh("COMPOSER_ROOT_VERSION=${composerRootVersion} php-install/bin/php composer.phar install --no-interaction");
     }
 
     stage('Run Tests') {
