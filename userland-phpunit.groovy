@@ -35,13 +35,13 @@ node() {
 
     stage('Run Composer Install') {
         def composerRootVersion = sh([script:"php-install/bin/php -r 'echo json_decode(file_get_contents(\"./composer.json\"), true)[\"extra\"][\"branch-alias\"][\"dev-master\"];'", returnStdout:true]).trim();
-
-        sh("COMPOSER_ROOT_VERSION=${composerRootVersion} php-install/bin/php composer.phar install --no-interaction");
+        sh("touch php.ini");
+        sh("COMPOSER_ROOT_VERSION=${composerRootVersion} php-install/bin/php -c php.ini composer.phar install --no-interaction");
     }
 
     stage('Run Tests') {
         try {
-            sh("php-install/bin/php phpunit --log-junit=phpunit-junit.xml");
+            sh("php-install/bin/php -c php.ini phpunit --log-junit=phpunit-junit.xml");
         }
         finally {
             junit('*junit.xml');
