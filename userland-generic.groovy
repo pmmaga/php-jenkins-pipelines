@@ -41,7 +41,7 @@ node() {
 
     stage('Run Tests') {
         try {
-            sh("php-install/bin/php -c php.ini vendor/bin/phpunit --log-junit=tests-junit.xml");
+            sh("php-install/bin/php -c php.ini ${PHPUNIT_PATH} --log-junit=tests-junit.xml");
         }
         finally {
             junit('*junit.xml');
