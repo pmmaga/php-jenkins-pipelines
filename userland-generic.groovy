@@ -3,11 +3,11 @@ node() {
         checkout(
             [
                 $class: 'GitSCM', 
-                branches: [[name: 'master']], 
+                branches: [[name: DOWNSTREAM_BRANCH]], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [[$class: 'WipeWorkspace']], 
                 submoduleCfg: [], 
-                userRemoteConfigs: [[url: 'https://github.com/composer/composer.git']]
+                userRemoteConfigs: [[url: DOWNSTREAM_URL]]
             ]
         );
     }
@@ -41,7 +41,7 @@ node() {
 
     stage('Run Tests') {
         try {
-            sh("php-install/bin/php -c php.ini vendor/bin/phpunit --log-junit=composer-junit.xml");
+            sh("php-install/bin/php -c php.ini vendor/bin/phpunit --log-junit=tests-junit.xml");
         }
         finally {
             junit('*junit.xml');
