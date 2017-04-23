@@ -7,7 +7,7 @@ node() {
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [[$class: 'WipeWorkspace']], 
                 submoduleCfg: [], 
-                userRemoteConfigs: [[url: 'https://github.com/sebastianbergmann/phpunit.git']]
+                userRemoteConfigs: [[url: 'https://github.com/composer/composer.git']]
             ]
         );
     }
@@ -41,7 +41,7 @@ node() {
 
     stage('Run Tests') {
         try {
-            sh("php-install/bin/php -c php.ini phpunit --log-junit=phpunit-junit.xml");
+            sh("php-install/bin/php -c php.ini vendor/bin/phpunit --log-junit=composer-junit.xml");
         }
         finally {
             junit('*junit.xml');
