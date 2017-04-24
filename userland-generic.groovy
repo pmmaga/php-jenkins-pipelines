@@ -42,7 +42,7 @@ node() {
     stage('Run Tests') {
         try {
             wrap([$class: 'AnsiColorBuildWrapper']) {
-                sh("php-install/bin/php -c php.ini ${PHPUNIT_PATH} --log-junit=tests-junit.xml");
+                sh("php-install/bin/php -c php.ini ${PHPUNIT_PATH} --exclude-group tty --log-junit=tests-junit.xml");
             }
         }
         finally {
