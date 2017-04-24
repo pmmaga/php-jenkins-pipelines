@@ -13,12 +13,12 @@
         <hudson.model.StringParameterDefinition>
           <name>BRANCH</name>
           <description>The branch from php-src from which to get the artifact</description>
-          <defaultValue>master</defaultValue>
+          <defaultValue>PHP-7.0</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOWNSTREAM_URL</name>
           <description>The git url of the downstream project to test</description>
-          <defaultValue>https://github.com/amphp/amp.git</defaultValue>
+          <defaultValue>https://github.com/FriendsOfPHP/PHP-CS-Fixer.git</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOWNSTREAM_BRANCH</name>
@@ -36,7 +36,7 @@
       <triggers>
         <jenkins.triggers.ReverseBuildTrigger>
           <spec></spec>
-          <upstreamProjects>php-src/master/build</upstreamProjects>
+          <upstreamProjects>php-src/PHP-7.0/build</upstreamProjects>
           <threshold>
             <name>SUCCESS</name>
             <ordinal>0</ordinal>
