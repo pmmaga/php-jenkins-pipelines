@@ -23,7 +23,7 @@
         <hudson.model.StringParameterDefinition>
           <name>DOWNSTREAM_BRANCH</name>
           <description>The branch of the downstream project to test</description>
-          <defaultValue>master</defaultValue>
+          <defaultValue>3.4</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>PHPUNIT_PATH</name>
