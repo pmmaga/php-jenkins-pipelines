@@ -17,7 +17,7 @@ node() {
     }
 
     stage('Configure') {
-        def defaultConfigure = '--with-openssl --enable-mbstring --with-zlib --enable-zip';
+        def defaultConfigure = '--with-openssl --enable-mbstring --with-zlib --enable-zip --without-pear';
         sh('./buildconf --force');
         def debugConfigure = '--enable-debug';
         if(DEBUG != 'true') {
