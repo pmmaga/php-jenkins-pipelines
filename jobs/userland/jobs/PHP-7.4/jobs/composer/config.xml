@@ -3,7 +3,7 @@
   <actions>
     <io.jenkins.blueocean.service.embedded.BlueOceanUrlAction plugin="blueocean-rest-impl@1.3.3">
       <blueOceanUrlObject class="io.jenkins.blueocean.service.embedded.BlueOceanUrlObjectImpl">
-        <mappedUrl>blue/organizations/jenkins/userland%2FPHP-7.1%2Fcomposer</mappedUrl>
+        <mappedUrl>blue/organizations/jenkins/userland%2FPHP-7.4%2Fcomposer</mappedUrl>
         <modelObject class="flow-definition" reference="../../../.."/>
       </blueOceanUrlObject>
     </io.jenkins.blueocean.service.embedded.BlueOceanUrlAction>
@@ -28,7 +28,7 @@
         <hudson.model.StringParameterDefinition>
           <name>BRANCH</name>
           <description>The branch from php-src from which to get the artifact</description>
-          <defaultValue>PHP-7.1</defaultValue>
+          <defaultValue>PHP-7.4</defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>DOWNSTREAM_URL</name>
@@ -51,7 +51,7 @@
       <triggers>
         <jenkins.triggers.ReverseBuildTrigger>
           <spec></spec>
-          <upstreamProjects>php-src/PHP-7.1/build</upstreamProjects>
+          <upstreamProjects>php-src/PHP-7.4/build</upstreamProjects>
           <threshold>
             <name>SUCCESS</name>
             <ordinal>0</ordinal>
